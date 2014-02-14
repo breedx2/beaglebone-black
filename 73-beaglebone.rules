@@ -1,0 +1,8 @@
+New USB device found, idVendor=1d6b, idProduct=0104
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_interface",         ATTRS{idVendor}=="1d6b", ATTRS{idProduct}=="0104",         DRIVER=="", RUN+="/sbin/modprobe -b ftdi_sio"
+
+ACTION=="add", SUBSYSTEM=="drivers",         ENV{DEVPATH}=="/bus/usb-serial/drivers/ftdi_sio",         ATTR{new_id}="1d6b 0104"
+
+ACTION=="add", KERNEL=="ttyUSB*", 	ATTRS{interface}=="BeagleBone",         ATTRS{bInterfaceNumber}=="00", 	SYMLINK+="beaglebone-jtag"
+
+ACTION=="add", KERNEL=="ttyUSB*", 	ATTRS{interface}=="BeagleBone",         ATTRS{bInterfaceNumber}=="01", 	SYMLINK+="beaglebone-serial"
